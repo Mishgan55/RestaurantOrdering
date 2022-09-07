@@ -20,13 +20,14 @@ public class CustomerDAO implements CRUDRepository {
 
 
     @Override
-    public Object show(Object id) {
-        return null;
+    public List<Customers> index() {
+        return jdbcTemplate.query("select * from restaurant.customers", new CustomerMapper());
     }
 
     @Override
-    public List<Customers> index() {
-        return jdbcTemplate.query("select * from restaurant.customers", new CustomerMapper());
+    public Customers show(int id) {
+        return jdbcTemplate.query("select * from restaurant.customers where id=?", new Object[]{id},
+                new CustomerMapper()).stream().findAny().orElse(null);
     }
 
     @Override

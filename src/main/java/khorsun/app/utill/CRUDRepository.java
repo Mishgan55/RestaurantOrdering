@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CRUDRepository<K,T> {
-    T show(K id);
+    T show(int id);
 
 
 

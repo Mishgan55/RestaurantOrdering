@@ -7,12 +7,9 @@
 <body>
 
 <div th:each="people : ${customer}">
-    <a th:text="${people.getId()}">user</a>
-    <a th:text="${people.getName()}">user</a>
-    <a th:text="${people.getEmail()}">user</a>
-    <a th:text="${people.getPhoneNumber()}">user</a>
-    <a th:text="${people.getCreationDate()}">user</a>
-    <a th:text="${people.getModificationDate()}">user</a>
+
+    <a th:href="@{/customer/{id}(id=${people.getId()})}" th:text="${people.getName()}">user</a>
+
 </div>
 
 
