@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<div th:each="people : ${customer}">
+    <a th:text="${people.getId()}">user</a>
+    <a th:text="${people.getName()}">user</a>
+    <a th:text="${people.getEmail()}">user</a>
+    <a th:text="${people.getPhoneNumber()}">user</a>
+    <a th:text="${people.getCreationDate()}">user</a>
+    <a th:text="${people.getModificationDate()}">user</a>
+</div>
+
+
+
+</body>
+</html>

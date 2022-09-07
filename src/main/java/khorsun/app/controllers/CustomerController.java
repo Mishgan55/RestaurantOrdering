@@ -20,7 +20,7 @@ private final CustomerDAO customerDAO;
     @GetMapping()
     public String index(Model model){
         model.addAttribute("customer",customerDAO.index());
-        return "customer/show";
+        return "customer/index";
 
     }
 
