@@ -37,7 +37,7 @@ public class ProductsController {
 
     }
 
-    @GetMapping("/new")
+    @GetMapping("/new-product")
     public String newProduct(Model model ){
         model.addAttribute("product", new Products());
         return "products/new-product";
@@ -49,7 +49,7 @@ public class ProductsController {
         return "redirect:/products";
     }
 
-    @GetMapping("/{id}/edit")
+    @GetMapping("/{id}/edit-product")
     public String edit(@PathVariable("id")int id,Model model){
         model.addAttribute("product",productsDao.show(id));
         return "products/edit-product";

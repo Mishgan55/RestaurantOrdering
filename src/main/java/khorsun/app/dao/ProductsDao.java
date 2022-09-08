@@ -18,9 +18,9 @@ public class ProductsDao implements ProductsService {
     }
 
     @Override
-    public Object show(int id) {
+    public Products show(int id) {
         return jdbcTemplate.query("select from restaurant.products where id=?", new Object[]{id},
-                new CustomerMapper()).stream().findAny().orElse(null);
+                new ProductsMapper()).stream().findAny().orElse(null);
     }
 
     @Override
