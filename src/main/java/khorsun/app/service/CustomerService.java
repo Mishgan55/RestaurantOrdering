@@ -17,7 +17,7 @@ public interface CustomerService<T,K> {
 
      void save(Customers customers);
 
-    T update(T object);
+    void update(int id,Customers updatedCustomers);
 
-    K delete(K id);
+    void delete(int id);
 }

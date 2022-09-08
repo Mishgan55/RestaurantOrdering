@@ -29,7 +29,7 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
         super.onStartup(aServletContext);
         registerHiddenFieldFilter(aServletContext);
     }
-
+// Add filter for PATH and DELETE requests
     private void registerHiddenFieldFilter(ServletContext aContext) {
         aContext.addFilter("hiddenHttpMethodFilter",
                 new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");

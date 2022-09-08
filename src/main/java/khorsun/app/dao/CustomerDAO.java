@@ -41,12 +41,16 @@ public class CustomerDAO implements CustomerService{
 
 
     @Override
-    public Object update(Object object) {
-        return null;
+    public void update(int id,Customers updatedCustomers) {
+        jdbcTemplate.update("update restaurant.customers set name=?,email=?,phone_number=? where id=?",
+                updatedCustomers.getName(),
+                updatedCustomers.getEmail(),
+                updatedCustomers.getPhoneNumber(),
+                id);
     }
 
     @Override
-    public Object delete(Object id) {
-        return null;
+    public void delete(int id) {
+       jdbcTemplate.update("delete from restaurant.customers where id=?",id);
     }
 }
