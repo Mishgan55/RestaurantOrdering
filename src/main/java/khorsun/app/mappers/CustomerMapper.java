@@ -1,4 +1,4 @@
-package khorsun.app.dao;
+package khorsun.app.mappers;
 
 import khorsun.app.models.Customers;
 import org.springframework.jdbc.core.RowMapper;

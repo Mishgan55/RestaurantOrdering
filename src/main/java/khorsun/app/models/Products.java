@@ -13,7 +13,7 @@ public class Products {
     private int id;
     private String menuName;
     private String description;
-    private String price;
+    private Double price;
 
 
 }

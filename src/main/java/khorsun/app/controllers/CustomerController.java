@@ -49,7 +49,7 @@ private final CustomerDAO customerDAO;
     }
 
     @PostMapping()
-    public String newCustomer(@ModelAttribute("customer")@Valid Customers customers){
+    public String create(@ModelAttribute("customer")@Valid Customers customers){
         customerDAO.save(customers);
 
         return "redirect:/customer";

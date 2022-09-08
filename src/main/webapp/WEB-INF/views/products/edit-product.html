@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/product/{id}(id=${product.getId()})}" th:object="${product}">
+    <label for="menuName">Enter menu Name: </label>
+    <input type="text" th:field="*{menuName}" id="menuName"/>
+
+    <br/>
+
+    <label for="description">Enter description: </label>
+    <input type="text" th:field="*{description}" id="description"/>
+
+    <br/>
+
+    <label for="price">Enter price: </label>
+    <input type="text" th:field="*{phoneNumber}" id="price"/>
+
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+</body>
+</html>

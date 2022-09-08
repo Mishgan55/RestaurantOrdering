@@ -1,13 +1,12 @@
 package khorsun.app.dao;
 
+import khorsun.app.mappers.CustomerMapper;
 import khorsun.app.models.Customers;
 
 import khorsun.app.service.CustomerService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 @Component
