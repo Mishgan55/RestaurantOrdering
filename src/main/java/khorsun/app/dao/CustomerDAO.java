@@ -1,16 +1,17 @@
 package khorsun.app.dao;
 
 import khorsun.app.models.Customers;
-import khorsun.app.utill.CRUDRepository;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
+
+import khorsun.app.service.CustomerService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Component
-public class CustomerDAO implements CRUDRepository {
+public class CustomerDAO implements CustomerService{
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -25,15 +26,19 @@ public class CustomerDAO implements CRUDRepository {
     }
 
     @Override
+    public void save(Customers customers) {
+        jdbcTemplate.update("insert into restaurant.customers(name, email, phone_number) values (?,?,?)",
+                customers.getName(),customers.getEmail(),customers.getPhoneNumber());
+    }
+
+
+    @Override
     public Customers show(int id) {
         return jdbcTemplate.query("select * from restaurant.customers where id=?", new Object[]{id},
                 new CustomerMapper()).stream().findAny().orElse(null);
     }
 
-    @Override
-    public Object save(Object object) {
-        return null;
-    }
+
 
     @Override
     public Object update(Object object) {
