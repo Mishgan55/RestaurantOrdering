@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class CustomerDAO implements CustomerService{
@@ -28,6 +29,12 @@ public class CustomerDAO implements CustomerService{
     public void save(Customers customers) {
         jdbcTemplate.update("insert into restaurant.customers(name, email, phone_number) values (?,?,?)",
                 customers.getName(),customers.getEmail(),customers.getPhoneNumber());
+    }
+
+//method show for CustomerValidator
+    public Optional<Customers> show(String email){
+        return jdbcTemplate.query("select * from restaurant.customers where email=?",
+                new Object[]{email},new CustomerMapper()).stream().findAny();
     }
 
 

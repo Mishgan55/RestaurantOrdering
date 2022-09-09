@@ -8,17 +8,19 @@
 <form th:method="POST" th:action="@{/customer}" th:object="${customer}">
     <label for="name">Enter name: </label>
     <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
 
     <br/>
 
     <label for="email">Enter email: </label>
     <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</div>
 
     <br/>
 
     <label for="phoneNumber">Enter phone number: </label>
     <input type="text" th:field="*{phoneNumber}" id="phoneNumber"/>
-
+    <div style="color:red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">phone Number Error</div>
     <br/>
     <input type="submit" value="Create!"/>
 </form>
