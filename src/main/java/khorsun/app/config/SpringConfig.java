@@ -1,5 +1,6 @@
 package khorsun.app.config;
 
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -57,19 +58,23 @@ public class SpringConfig implements WebMvcConfigurer {
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
-// Environment class get properties from database.properties
+
+
     @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-        driverManagerDataSource.setDriverClassName(Objects.requireNonNull(environment.getProperty("driver")));
-        driverManagerDataSource.setUrl(environment.getProperty("url"));
-        driverManagerDataSource.setUsername(environment.getProperty("login"));
-        driverManagerDataSource.setPassword(environment.getProperty("password"));
-        return driverManagerDataSource;
+    public DataSource hikariDatasource() {
+        HikariDataSource hikariDataSource = new HikariDataSource();
+
+        hikariDataSource.setJdbcUrl(environment.getProperty("url"));
+        hikariDataSource.setUsername(environment.getProperty("login"));
+        hikariDataSource.setPassword(environment.getProperty("password"));
+        hikariDataSource.setDriverClassName(environment.getProperty("driver"));
+        hikariDataSource.setMaximumPoolSize(10);
+
+        return hikariDataSource;
     }
 
     @Bean
     public JdbcTemplate jdbcTemplate() {
-        return new JdbcTemplate(dataSource());
+        return new JdbcTemplate(hikariDatasource());
     }
 }
