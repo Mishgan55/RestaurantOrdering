@@ -1,6 +1,6 @@
 package khorsun.app.controllers;
 
-import jakarta.validation.Valid;
+
 import khorsun.app.dao.CustomerDAO;
 import khorsun.app.models.Customers;
 import khorsun.app.utill.CustomerValidator;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 
 
 @Controller
